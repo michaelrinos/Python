@@ -9,8 +9,6 @@ EMPTY = " "
 NUM_SPACES = 10
 O = "O"
 X = "X"
-player
-computer
 valid = [0,1,2,3,4,5,6,7,8]
 
 def main():
@@ -18,18 +16,19 @@ def main():
 	Calls all function to create the game
 	"""
 
+	response = str(input("Would you like to go first (y/n): "))
+	XorO = str(input("Do you want to be X or O? "))
+	if XorO.upper() == X:
+		player1 = X
+		player2 = O
+	else:
+		player1 = O
+		player2 = X
+
 	board = [EMPTY for i in range(NUM_SPACES)]
 	showMoves(copyBoard(board))
-
-def first():
-	response = str(input("Would you like to go first (y/n): "))
-	if response.lower() == 'y':
-		player = O
-		computer = X
-	else: 
-		computer = O
-		player = X
-
+	move(board, response, player1)
+	print("You have made a move!")
 
 def printBoard(board):
 	"""
@@ -86,23 +85,18 @@ def isTie(board):
 
 
 
-def move(board):
-	cont = False
-	gameover = False
-	while(not gameover):
-		while( not cont):
-			print("Please choose a square to move to, your options are: ")
-			showMoves(copyBoard(board))
-			move = int(input())
-			if move in valid:
-				cont = True
-		cont = False
-		if gameover(board):
-			gameover = True
-
-		if isTie(board):
-			gameover = True
-
+def move(board, response, player):
+	done = False
+	while( not done):
+		print("Please choose a square to move to, your options are: ")
+		showMoves(copyBoard(board))
+		move = int(input())
+		if move in valid:
+			board[move] = player
+			valid.remove(move)
+			done = True
+		else:
+			print("That's an invalid move! Choose another spot")
 
 def minamax():
 	pass
