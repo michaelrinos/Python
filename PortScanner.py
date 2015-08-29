@@ -8,7 +8,7 @@ def main():
     print("Starting the scan!")
     for port in range(1,1025):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        response = sock.connect_ex(serverIp,port) 
+        response = sock.connect_ex((serverIp,port)) 
         if response == 0:
             print("The port %d: is Open"% (port,))
         sock.close()
