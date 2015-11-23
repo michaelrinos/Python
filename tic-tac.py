@@ -18,9 +18,9 @@ def main():
 	Calls all function to create the game
 	"""
 
-	twoPlayer = str(input("Do you want to play the Computer (y/n): "))
+	pleyComputer = str(input("Do you want to play the Computer (y/n): "))
 	XorO = str(input("Do you want to be X or O? "))
-	response = str(input("Would you like to go first (y/n): "))
+	goFirst = str(input("Would you like to go first (y/n): "))
 	board = [EMPTY for i in range(NUM_SPACES)]
 	if XorO.upper() == X:
 		player1 = X
@@ -30,10 +30,9 @@ def main():
 		player2 = X
 
 	printBoard(board)
-	if twoPlayer.lower() == 'n':
-		if response.lower() == "y":
+	if pleyComputer.lower() == 'n':
+		if goFirst.lower() == "y":
 			while not gameOver(board, player2) or not isTie(board):
-				computerMove(board, player1)
 				move(board, player1)
 				if gameOver(board, player1) or isTie(board):
 					break;
@@ -45,8 +44,20 @@ def main():
 					break;
 				move(board, player1)
 	else:
-		computerMove(board, player2)
-	print("Its Over, but not over")
+                if goFirst.lower() == "y":
+			while not gameOver(board, player2) or not isTie(board):
+				move(board, player1)
+				if gameOver(board, player1) or isTie(board):
+					break;
+				computerMove(board,player2)
+		else:
+			while not gameOver(board, player1) or not isTie(board):
+				computerMove(board,player2)
+				if gameOver(board, player2) or isTie(board):
+					break;
+				move(board, player1)	
+		
+	print("Game Over")
 
 def printBoard(board):
 	"""
