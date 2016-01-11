@@ -12,8 +12,10 @@ def main():
     map = ReadFile()
     unsorted_list_of_tups = sorted(map.items(), key=lambda x:x[1])
     unsorted_list_of_tups.sort(key = itemgetter(1))
-    #unsorted_list_of_tups.sort(key = itemgetter(1), reverse=True)
+    #unsorted_list_of_tups.sort(key = itemgetter(1), rever
+    se=True)
     print(unsorted_list_of_tups)
+
 
 
 
