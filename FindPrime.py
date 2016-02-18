@@ -1,8 +1,7 @@
 """
 
 Author: Michael Rinos <mer8503@rit.edu>
-Description:
-File: Program which given a range finds all prime numbers in that range
+Description: Program which given a range finds all prime numbers in that range
 
 """
 from math import sqrt
