@@ -8,7 +8,7 @@ That is that it reads the same forwards as backwards like “racecar”
 """
 
 def main():
-	string = str(input("Enter a string to reverse: "))
+	string = str(input("Enter a potential palindrome: "))
 	middle = len(string)//2
 	
 	if len(string)%2 == 0:
